@@ -1,0 +1,85 @@
+import { Track, Story } from '../types';
+
+export const MOCK_TRACKS: Track[] = [
+  {
+    id: '1',
+    title: 'Rừng Thông Xào Xạc',
+    artist: 'Thiên Nhiên',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    coverUrl: 'https://picsum.photos/seed/forest/400/400',
+    mood: ['bình yên', 'stress'],
+    type: 'music',
+    duration: 180,
+  },
+  {
+    id: '2',
+    title: 'Vượt Qua Áp Lực Đồng Trang Lứa',
+    artist: 'Tâm Lý Học Sinh Viên',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    coverUrl: 'https://picsum.photos/seed/student/400/400',
+    mood: ['stress', 'mệt mỏi'],
+    type: 'podcast',
+    duration: 600,
+  },
+  {
+    id: '3',
+    title: 'Giai Điệu Hy Vọng',
+    artist: 'Chill Beats',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+    coverUrl: 'https://picsum.photos/seed/hope/400/400',
+    mood: ['mất động lực', 'buồn'],
+    type: 'music',
+    duration: 240,
+  },
+  {
+    id: '4',
+    title: 'Tại Sao Chúng Ta Thấy Cô Đơn?',
+    artist: 'Góc Nhìn Chuyên Gia',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+    coverUrl: 'https://picsum.photos/seed/soul/400/400',
+    mood: ['buồn', 'cô đơn'],
+    type: 'podcast',
+    duration: 900,
+  },
+  {
+    id: '5',
+    title: 'Mưa Đêm Thành Phố',
+    artist: 'Ambient Sound',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+    coverUrl: 'https://picsum.photos/seed/rain/400/400',
+    mood: ['cô đơn', 'stress'],
+    type: 'music',
+    duration: 300,
+  },
+  {
+    id: '6',
+    title: 'Nghệ Thuật Của Sự Nghỉ Ngơi',
+    artist: 'Self-care Series',
+    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+    coverUrl: 'https://picsum.photos/seed/rest/400/400',
+    mood: ['mệt mỏi', 'stress'],
+    type: 'podcast',
+    duration: 450,
+  },
+];
+
+export const MOCK_STORIES: Story[] = [
+  {
+    id: 's1',
+    content: 'Hôm nay mình vừa trượt môn Tiếng Anh chuyên ngành, cảm thấy sụp đổ quá. Có ai từng như mình không?',
+    timestamp: '2026-04-17T09:00:00Z',
+    mood: 'buồn',
+  },
+  {
+    id: 's2',
+    content: 'Vừa hoàn thành xong bài tiểu luận 3000 chữ! Cảm giác nhẹ bẫng luôn. Đi nghe podcast thôi.',
+    timestamp: '2026-04-17T10:30:00Z',
+    mood: 'vui',
+  },
+  {
+    id: 's3',
+    content: 'Đang cảm thấy bị burnout vì deadline dồn dập. Nghe "Tần số vỗ về" thực sự giúp mình bình tâm lại.',
+    timestamp: '2026-04-17T14:15:00Z',
+    mood: 'mệt mỏi',
+  },
+];
