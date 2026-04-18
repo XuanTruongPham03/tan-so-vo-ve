@@ -14,12 +14,12 @@ export default function TrackCard({ track, isActive, onClick }: TrackCardProps) 
     <div 
       onClick={onClick}
       className={cn(
-        "group relative bg-artistic-surface p-6 transition-all duration-300 cursor-pointer overflow-hidden",
+        "group relative bg-artistic-surface p-4 md:p-6 transition-all duration-300 cursor-pointer overflow-hidden",
         "border border-transparent hover:border-artistic-accent/30",
         isActive && "border-artistic-accent bg-artistic-accent/5"
       )}
     >
-      <div className="relative aspect-square mb-6 overflow-hidden">
+      <div className="relative aspect-square mb-4 md:mb-6 overflow-hidden">
         <img 
           src={track.coverUrl} 
           alt={track.title}

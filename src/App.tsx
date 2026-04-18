@@ -234,7 +234,7 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
 
         {/* Main View Area */}
         <main className="flex-1 min-h-0 relative overflow-y-auto scroll-smooth custom-scrollbar">
-          <div className="p-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
+          <div className="p-4 sm:p-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
             {children}
           </div>
           
@@ -275,13 +275,13 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
 function HomeView() {
   return (
     <div className="space-y-32">
-      <header className="relative py-20 overflow-hidden">
+      <header className="relative py-10 md:py-20 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-artistic-accent/5 rounded-full blur-[120px] pointer-events-none" />
         <motion.h2 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-7xl md:text-9xl font-sans font-black text-artistic-fg leading-[0.85] tracking-[-0.05em] uppercase"
+          className="text-6xl sm:text-7xl md:text-9xl font-sans font-black text-artistic-fg leading-[0.85] tracking-[-0.05em] uppercase"
         >
           TẦN SỐ<br/>
           <span className="italic font-serif font-normal lowercase tracking-wide text-artistic-accent block mt-4">vỗ về</span>
@@ -290,7 +290,7 @@ function HomeView() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-16 text-artistic-muted max-w-xl text-xs md:text-sm leading-relaxed uppercase tracking-[3px] font-medium"
+          className="mt-10 md:mt-16 text-artistic-muted max-w-xl text-xs md:text-sm leading-relaxed uppercase tracking-[2px] md:tracking-[3px] font-medium"
         >
           Một không gian nghệ thuật kết hợp âm thanh đa dạng, giúp xoa dịu tâm hồn và tái tạo năng lượng cho sinh viên sau những giờ học căng thẳng.
         </motion.p>
@@ -489,13 +489,13 @@ function ArchiveView({ tracks, currentTrack, handleTrackSelect, title, subtitle 
           </div>
         </header>
 
-        <div className="mb-12 flex flex-wrap gap-3">
+        <div className="mb-12 flex flex-wrap gap-2 md:gap-3">
           {moods.map((m) => (
             <button
               key={m}
               onClick={() => setFilterMood(m)}
               className={cn(
-                "px-6 py-2.5 text-[9px] font-black uppercase tracking-[2px] border transition-all",
+                "px-4 md:px-6 py-2 md:py-2.5 text-[8px] md:text-[9px] font-black uppercase tracking-[1px] md:tracking-[2px] border transition-all",
                 filterMood === m 
                   ? "bg-artistic-accent border-artistic-accent text-black" 
                   : "border-artistic-line text-artistic-muted hover:border-artistic-muted"

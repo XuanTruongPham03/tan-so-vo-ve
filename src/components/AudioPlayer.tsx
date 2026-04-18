@@ -90,33 +90,33 @@ export default function AudioPlayer({ currentTrack, isPlaying, setIsPlaying, onN
         <span className="text-[9px] text-artistic-muted font-mono tracking-widest">{formatTime(duration)}</span>
       </div>
 
-      <div className="flex items-center justify-between gap-8">
+      <div className="flex items-center justify-between gap-4 md:gap-8">
         {/* Track Info */}
-        <div className="flex items-center gap-4 w-1/4 min-w-[200px]">
-          <div className="relative group">
+        <div className="flex items-center gap-3 md:gap-4 flex-1 md:w-1/4 min-w-0">
+          <div className="relative group shrink-0">
             <img 
               src={currentTrack.coverUrl} 
               alt={currentTrack.title}
-              className="w-14 h-14 rounded-none object-cover border border-artistic-line grayscale group-hover:grayscale-0 transition-all"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-none object-cover border border-artistic-line grayscale group-hover:grayscale-0 transition-all"
               referrerPolicy="no-referrer"
             />
           </div>
           <div className="overflow-hidden">
-            <h4 className="font-serif italic text-base truncate leading-none mb-1">{currentTrack.title}</h4>
-            <p className="text-[10px] text-artistic-muted uppercase tracking-[2px] truncate">{currentTrack.artist}</p>
+            <h4 className="font-serif italic text-sm md:text-base truncate leading-none mb-1">{currentTrack.title}</h4>
+            <p className="text-[9px] md:text-[10px] text-artistic-muted uppercase tracking-[1px] md:tracking-[2px] truncate">{currentTrack.artist}</p>
           </div>
         </div>
 
         {/* Controls */}
-        <div className="flex items-center gap-8">
-          <button onClick={onPrev} className="text-artistic-muted hover:text-white transition-colors">
+        <div className="flex items-center gap-4 md:gap-8 shrink-0">
+          <button onClick={onPrev} className="hidden sm:block text-artistic-muted hover:text-white transition-colors">
             <SkipBack size={18} fill="currentColor" />
           </button>
           <button 
             onClick={() => setIsPlaying(!isPlaying)}
-            className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+            className="w-10 h-10 md:w-14 md:h-14 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)]"
           >
-            {isPlaying ? <Pause size={20} fill="black" /> : <Play size={20} fill="black" className="ml-1" />}
+            {isPlaying ? <Pause size={16} fill="black" /> : <Play size={16} fill="black" className="ml-0.5" />}
           </button>
           <button onClick={onNext} className="text-artistic-muted hover:text-white transition-colors">
             <SkipForward size={18} fill="currentColor" />
