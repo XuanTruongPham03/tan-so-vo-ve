@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Georgia", serif;
+  
+  --color-artistic-bg: #080808;
+  --color-artistic-fg: #ffffff;
+  --color-artistic-accent: #d4ff00;
+  --color-artistic-muted: #666666;
+  --color-artistic-line: #1a1a1a;
+  --color-artistic-surface: #111111;
+}
+
+@layer base {
+  body {
+    @apply bg-artistic-bg text-artistic-fg antialiased font-sans transition-colors duration-500 overflow-hidden;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d4ff00;
+  }
+}
