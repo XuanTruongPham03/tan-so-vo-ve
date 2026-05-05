@@ -170,15 +170,18 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
 
         {/* Sidebar Navigation */}
         <aside className={cn(
-          "fixed inset-y-0 left-0 w-72 bg-artistic-bg border-r border-artistic-line transition-all duration-500 z-[100] lg:relative lg:translate-x-0 flex flex-col",
+          "fixed inset-y-0 left-0 w-72 bg-artistic-bg border-r border-artistic-line transition-all duration-500 z-[200] lg:relative lg:translate-x-0 flex flex-col h-full",
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}>
-          <div className="p-10 flex flex-col h-full bg-artistic-bg/50 backdrop-blur-xl">
-            <Link to="/" onClick={() => setSidebarOpen(false)} className="flex items-center gap-4 mb-16 group">
-              <div className="w-10 h-10 bg-artistic-accent flex items-center justify-center text-black group-hover:rotate-12 transition-all duration-500 shadow-[0_0_20px_rgba(212,255,0,0.2)]">
-                <Heart fill="black" size={20} />
+          <div className="p-6 md:p-8 flex flex-col h-full bg-artistic-bg/50 backdrop-blur-xl overflow-y-auto custom-scrollbar">
+            <Link to="/" onClick={() => setSidebarOpen(false)} className="flex flex-col gap-4 mb-8 md:mb-16 group">
+              <div className="w-full flex justify-center p-2 md:p-4">
+                <img 
+                  src="/logo.png" 
+                  alt="Tần số vỗ về" 
+                  className="max-w-[100px] md:max-w-[120px] h-auto" 
+                />
               </div>
-              <h1 className="text-xl font-serif italic font-black tracking-tight leading-none">Tần số<br/><span className="text-artistic-accent not-italic font-sans text-[10px] uppercase tracking-[4px]">vỗ về</span></h1>
             </Link>
 
             <nav className="flex-1 space-y-1">
@@ -205,14 +208,14 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
             </nav>
 
             <div className="mt-auto pt-10 border-t border-artistic-line space-y-6">
-              <div className="p-6 bg-artistic-surface/30 border border-artistic-line relative overflow-hidden group">
+              {/* <div className="p-6 bg-artistic-surface/30 border border-artistic-line relative overflow-hidden group">
                  <div className="absolute top-0 left-0 w-full h-px bg-artistic-accent/20" />
                  <p className="text-[9px] font-black uppercase tracking-[2px] mb-2 text-artistic-accent">Hỗ trợ cộng đồng</p>
                  <p className="text-[10px] text-artistic-muted leading-relaxed uppercase tracking-widest font-bold">
                    Dành riêng cho sinh viên Việt Nam.
                  </p>
-              </div>
-              <div className="flex items-center justify-between text-[8px] font-black uppercase tracking-[2px] text-artistic-muted/30">
+              </div> */}
+              <div className="flex items-center justify-between text-[8px] font-black uppercase tracking-[2px] text-artistic-muted/30 pb-4">
                  <span>Nhóm 72 • FLF1007</span>
               </div>
             </div>
@@ -238,11 +241,9 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
             {children}
           </div>
           
-          <footer className="px-8 md:px-16 py-20 border-t border-artistic-line flex flex-col md:flex-row justify-between items-center gap-10 bg-artistic-surface/10">
-            <div className="flex items-center gap-4">
-               <div className="w-5 h-5 bg-artistic-muted/20 flex items-center justify-center text-black">
-                  <Heart fill="currentColor" size={10} className="text-artistic-muted" />
-               </div>
+          <footer className="px-8 md:px-16 py-20 border-t border-artistic-line flex flex-col md:flex-row justify-between items-center gap-10 bg-artistic-accent/5">
+            <div className="flex items-center gap-6">
+               <img src="/logo.png" alt="Logo" className="w-12 h-auto opacity-80" />
                <p className="text-[10px] font-black uppercase tracking-[3px] text-artistic-muted">TẦN SỐ VỖ VỀ // KHÔNG GIAN CHỮA LÀNH</p>
             </div>
             <div className="flex gap-10 text-[9px] font-black uppercase tracking-[2px] text-artistic-muted/60">
@@ -251,13 +252,16 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
               <span className="cursor-pointer hover:text-artistic-accent transition-colors underline-offset-4 hover:underline">Liên hệ</span>
             </div>
           </footer>
+
+          {/* Spacer to prevent fixed player from covering content */}
+          {currentTrack && <div className="h-32 md:h-40 shrink-0" />}
         </main>
       </div>
 
-      {/* Global Player Overlay (Always fixed relative to the viewport height, but separated from main content) */}
+      {/* Global Player Overlay */}
       <AnimatePresence>
         {currentTrack && (
-          <div className="z-[150] shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+          <div className="fixed bottom-0 left-0 lg:left-72 right-0 z-[150] bg-white/80 backdrop-blur-md shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border-t border-artistic-line">
             <AudioPlayer 
               currentTrack={currentTrack} 
               isPlaying={isPlaying}
@@ -275,22 +279,16 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
 function HomeView() {
   return (
     <div className="space-y-32">
-      <header className="relative py-10 md:py-20 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-artistic-accent/5 rounded-full blur-[120px] pointer-events-none" />
-        <motion.h2 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-6xl sm:text-7xl md:text-9xl font-sans font-black text-artistic-fg leading-[0.85] tracking-[-0.05em] uppercase"
-        >
-          TẦN SỐ<br/>
-          <span className="italic font-serif font-normal lowercase tracking-wide text-artistic-accent block mt-4">vỗ về</span>
-        </motion.h2>
+      <header className="relative py-10 md:py-20 overflow-hidden text-center">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-artistic-accent/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="flex justify-center mb-10">
+          <img src="/logo.png" alt="Logo" className="max-w-[300px] h-auto" />
+        </div>
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-10 md:mt-16 text-artistic-muted max-w-xl text-xs md:text-sm leading-relaxed uppercase tracking-[2px] md:tracking-[3px] font-medium"
+          className="mt-6 text-artistic-muted max-w-2xl mx-auto text-sm md:text-base leading-relaxed uppercase tracking-[2px] font-medium"
         >
           Một không gian nghệ thuật kết hợp âm thanh đa dạng, giúp xoa dịu tâm hồn và tái tạo năng lượng cho sinh viên sau những giờ học căng thẳng.
         </motion.p>
@@ -352,7 +350,7 @@ function HomeView() {
 
       <section className="space-y-12">
          <div className="flex items-end justify-between border-b border-artistic-line pb-6">
-            <h3 className="text-4xl font-sans font-black uppercase tracking-tighter">Nội dung mới nhất</h3>
+            <h3 className="text-3xl md:text-4xl font-serif font-black uppercase tracking-tighter">Nội dung mới nhất</h3>
             <Link to="/music" className="text-[9px] font-black uppercase tracking-[3px] text-artistic-muted hover:text-artistic-accent">Xem tất cả</Link>
          </div>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-artistic-line border border-artistic-line overflow-hidden">
@@ -374,7 +372,7 @@ function NeuralView({ selectedMood, onSelect, isAiLoading, moodAdvice, recommend
     <section className="py-10">
       <div className="max-w-6xl mx-auto">
         <header className="mb-24">
-          <h2 className="text-7xl font-sans font-black uppercase tracking-tighter mix-blend-difference mb-8">Gợi ý theo<br/>cảm xúc</h2>
+          <h2 className="text-5xl sm:text-7xl font-serif font-black uppercase tracking-tighter mb-8 text-artistic-fg">Gợi ý theo<br/>cảm xúc</h2>
           <p className="text-artistic-muted text-sm uppercase tracking-widest max-w-md leading-relaxed">
             Hệ thống sẽ dựa trên trạng thái của bạn để đưa ra những "Artifacts" âm thanh phù hợp nhất.
           </p>
@@ -391,7 +389,7 @@ function NeuralView({ selectedMood, onSelect, isAiLoading, moodAdvice, recommend
                 onClick={() => onSelect(m)}
                 className={cn(
                   "p-4 border text-[9px] font-black uppercase tracking-[2px] transition-all",
-                  selectedMood === m ? "bg-artistic-accent border-artistic-accent text-black" : "border-artistic-line text-artistic-muted hover:text-white"
+                  selectedMood === m ? "bg-artistic-accent border-artistic-accent text-white" : "border-artistic-line text-artistic-muted hover:border-artistic-accent hover:text-artistic-accent"
                 )}
               >
                 {m}
@@ -475,7 +473,7 @@ function ArchiveView({ tracks, currentTrack, handleTrackSelect, title, subtitle 
         <header className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 md:mb-24 border-b border-artistic-line pb-12 gap-10">
           <div className="flex-1 min-w-0">
             <h3 className="text-[10px] uppercase tracking-[4px] mb-6 text-artistic-muted font-black">{subtitle}</h3>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-sans font-black uppercase tracking-tighter break-words leading-[0.9]">{title}</h2>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-black uppercase tracking-tighter break-words leading-[0.9] text-artistic-fg">{title}</h2>
           </div>
           <div className="relative group w-full lg:w-72 shrink-0">
             <Search size={14} className="absolute left-0 top-1/2 -translate-y-1/2 text-artistic-muted group-focus-within:text-artistic-accent transition-colors" />
@@ -532,7 +530,7 @@ function CommunityView({ posts, setPosts, newNote, setNewNote, selectedMood }: a
     <section className="py-10">
       <div className="max-w-5xl mx-auto">
         <header className="mb-24">
-          <h2 className="text-7xl font-sans font-black uppercase tracking-tighter mb-8">Góc ẩn danh</h2>
+          <h2 className="text-5xl md:text-7xl font-serif font-black uppercase tracking-tighter mb-8 text-artistic-fg">Góc ẩn danh</h2>
           <p className="text-artistic-muted text-xs uppercase tracking-[3px] max-w-md font-medium">
             Nơi chia sẻ những tâm tư, câu chuyện chưa kể của cộng đồng sinh viên. Không phán xét, chỉ có sự thấu cảm.
           </p>
@@ -543,7 +541,7 @@ function CommunityView({ posts, setPosts, newNote, setNewNote, selectedMood }: a
             value={newNote}
             onChange={(e) => setNewNote(e.target.value)}
             placeholder="GỬI ĐI TẦN SỐ CỦA BẠN..."
-            className="w-full h-48 bg-black border border-artistic-line p-8 outline-none resize-none text-xl font-serif italic text-artistic-fg focus:border-artistic-accent transition-all placeholder:text-artistic-muted/20"
+            className="w-full h-48 bg-artistic-bg border border-artistic-line p-8 outline-none resize-none text-xl font-serif italic text-artistic-fg focus:border-artistic-accent transition-all placeholder:text-artistic-muted/20"
           />
           <div className="flex justify-between items-center mt-10">
             <div className="flex items-center gap-6">
@@ -585,7 +583,7 @@ function AboutView() {
   return (
     <section className="py-10 max-w-4xl space-y-20">
       <header>
-        <h2 className="text-5xl md:text-7xl font-sans font-black uppercase tracking-tighter mb-8 leading-none">Về dự án<br/><span className="italic font-serif font-normal lowercase tracking-normal text-artistic-accent">tần số vỗ về</span></h2>
+        <h2 className="text-5xl md:text-7xl font-serif font-black uppercase tracking-tighter mb-8 leading-none text-artistic-fg">Về dự án<br/><span className="italic font-normal lowercase tracking-normal text-artistic-accent">tần số vỗ về</span></h2>
         <p className="text-artistic-muted text-sm uppercase tracking-widest leading-relaxed max-w-2xl font-medium px-1">
           Một không gian âm thanh vỗ về tâm hồn dành cho sinh viên Việt Nam, nơi công nghệ và sự thấu cảm gặp nhau để cùng xoa dịu những áp lực thường nhật.
         </p>

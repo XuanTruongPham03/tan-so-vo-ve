@@ -62,7 +62,7 @@ export default function AudioPlayer({ currentTrack, isPlaying, setIsPlaying, onN
     <motion.div 
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      className="relative bg-black/90 backdrop-blur-3xl border-t border-artistic-line px-4 py-4 md:px-12 z-50 flex flex-col gap-3"
+      className="relative bg-white/90 backdrop-blur-3xl border-t border-artistic-line px-4 py-4 md:px-12 z-50 flex flex-col gap-3"
     >
       <audio 
         ref={audioRef}
@@ -83,7 +83,7 @@ export default function AudioPlayer({ currentTrack, isPlaying, setIsPlaying, onN
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
           />
           <div 
-            className="absolute top-0 left-0 h-full bg-artistic-accent shadow-[0_0_10px_#d4ff00]" 
+            className="absolute top-0 left-0 h-full bg-artistic-accent shadow-[0_0_10px_rgba(199,158,173,0.5)]" 
             style={{ width: `${progress}%` }} 
           />
         </div>
@@ -109,16 +109,16 @@ export default function AudioPlayer({ currentTrack, isPlaying, setIsPlaying, onN
 
         {/* Controls */}
         <div className="flex items-center gap-4 md:gap-8 shrink-0">
-          <button onClick={onPrev} className="hidden sm:block text-artistic-muted hover:text-white transition-colors">
+          <button onClick={onPrev} className="hidden sm:block text-artistic-muted hover:text-artistic-fg transition-colors">
             <SkipBack size={18} fill="currentColor" />
           </button>
           <button 
             onClick={() => setIsPlaying(!isPlaying)}
-            className="w-10 h-10 md:w-14 md:h-14 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+            className="w-10 h-10 md:w-14 md:h-14 bg-artistic-accent text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-[0_0_40px_rgba(199,158,173,0.3)]"
           >
-            {isPlaying ? <Pause size={16} fill="black" /> : <Play size={16} fill="black" className="ml-0.5" />}
+            {isPlaying ? <Pause size={16} fill="white" /> : <Play size={16} fill="white" className="ml-0.5" />}
           </button>
-          <button onClick={onNext} className="text-artistic-muted hover:text-white transition-colors">
+          <button onClick={onNext} className="text-artistic-muted hover:text-artistic-fg transition-colors">
             <SkipForward size={18} fill="currentColor" />
           </button>
         </div>

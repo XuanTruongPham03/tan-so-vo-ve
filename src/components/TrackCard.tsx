@@ -23,21 +23,21 @@ export default function TrackCard({ track, isActive, onClick }: TrackCardProps) 
         <img 
           src={track.coverUrl} 
           alt={track.title}
-          className="w-full h-full object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
           referrerPolicy="no-referrer"
         />
         <div className={cn(
           "absolute inset-0 bg-artistic-accent/0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500",
           isActive && "opacity-100 bg-artistic-accent/10"
         )}>
-          <div className="w-14 h-14 bg-artistic-accent text-black rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(212,255,0,0.3)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+          <div className="w-14 h-14 bg-artistic-accent text-white rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(199,158,173,0.3)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
             <Play size={20} fill="currentColor" className={cn("ml-1")} />
           </div>
         </div>
         
         {/* Badge */}
         <div className="absolute top-4 left-4">
-          <span className="bg-black text-[8px] font-bold text-artistic-accent uppercase tracking-[2px] px-3 py-1 border border-artistic-accent/20">
+          <span className="bg-artistic-accent text-white text-[8px] font-bold uppercase tracking-[2px] px-3 py-1 border border-white/20">
             {track.type === 'music' ? 'Nhạc' : 'Podcast'}
           </span>
         </div>
