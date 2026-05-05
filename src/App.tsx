@@ -179,7 +179,7 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
                 <img 
                   src="/logo.png" 
                   alt="Tần số vỗ về" 
-                  className="max-w-[100px] md:max-w-[120px] h-auto" 
+                  className="max-w-[400px] md:max-w-[300px] h-auto" 
                 />
               </div>
             </Link>
@@ -243,7 +243,7 @@ function AppLayout({ children, currentTrack, isPlaying, setIsPlaying, onNext, on
           
           <footer className="px-8 md:px-16 py-20 border-t border-artistic-line flex flex-col md:flex-row justify-between items-center gap-10 bg-artistic-accent/5">
             <div className="flex items-center gap-6">
-               <img src="/logo.png" alt="Logo" className="w-12 h-auto opacity-80" />
+               <img src="/logo.png" alt="Logo" className="w-50 h-auto opacity-80" />
                <p className="text-[10px] font-black uppercase tracking-[3px] text-artistic-muted">TẦN SỐ VỖ VỀ // KHÔNG GIAN CHỮA LÀNH</p>
             </div>
             <div className="flex gap-10 text-[9px] font-black uppercase tracking-[2px] text-artistic-muted/60">
@@ -282,7 +282,7 @@ function HomeView() {
       <header className="relative py-10 md:py-20 overflow-hidden text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-artistic-accent/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="flex justify-center mb-10">
-          <img src="/logo.png" alt="Logo" className="max-w-[300px] h-auto" />
+          <img src="/logo.png" alt="Logo" className="max-w-[800px] w-full h-auto" />
         </div>
         <motion.p 
           initial={{ opacity: 0 }}
